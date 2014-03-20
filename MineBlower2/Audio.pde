@@ -34,6 +34,7 @@ class Audio
   AudioPlayer winSnd;
   AudioPlayer bubbleSnd;
   AudioPlayer torpRunSnd;
+  AudioPlayer pingSnd;
 
   AudioOutput out;    // Used for PingTone
 
@@ -46,14 +47,15 @@ class Audio
     diveSnd = minim.loadFile("Audio/Dive.mp3", 512);
     diveSnd.setGain(-8.0);
     bangSnd = minim.loadSample("Audio/Bang.mp3", 512);
-    disarmSnd = minim.loadSample("Audio/Disarm.mp3", 512);
+    disarmSnd = minim.loadSample("NewAudio/Disarm.mp3", 512);
+    disarmSnd.setGain(4.0);
     zapSnd = minim.loadSample("Audio/Zap.mp3", 512);
     zapSnd.setGain(-8.0);
     groundSnd = minim.loadSample("Audio/Grounded.mp3", 512);
     noMoreSnd = minim.loadFile("Audio/NoMore.mp3", 512);
     fireSnd = minim.loadFile("Audio/Fire.mp3", 512);
-    backSnd = minim.loadFile("Audio/Luie.mp3", 512);
-    backSnd.setGain(-24.0);
+    backSnd = minim.loadFile("NewAudio/BGMusic.mp3", 512);
+    backSnd.setGain(-8.0);
     tooLeftSnd = minim.loadFile("Audio/TooLeft.mp3", 512);
     tooRightSnd = minim.loadFile("Audio/TooRight.mp3", 512);
     tooUpSnd = minim.loadFile("Audio/TooUp.mp3", 512);
@@ -61,10 +63,11 @@ class Audio
     sinkingSnd = minim.loadFile("Audio/Sinking.mp3", 512);
     sunkSnd = minim.loadFile("Audio/Sunk.mp3", 512);
     winSnd = minim.loadFile("Audio/Win.mp3", 512);
-    bubbleSnd = minim.loadFile("Audio/Bubbles.mp3", 512);
-    bubbleSnd.setGain(-12.0);
+    bubbleSnd = minim.loadFile("NewAudio/Bubbles.mp3", 512);
+    //bubbleSnd.setGain(-12.0);
     torpRunSnd = minim.loadFile("Audio/TorpedoRun.mp3", 512);
     //torpRun.setGain(-12.0);
+    pingSnd = minim.loadFile("NewAudio/Ping.mp3", 512);    
 
     out = minim.getLineOut();    // Used for PingTone
   }
@@ -90,6 +93,7 @@ class Audio
     winSnd.pause();
     bubbleSnd.pause();
     torpRunSnd.pause();
+    pingSnd.pause();
     out.mute();
   }
 
@@ -114,6 +118,7 @@ class Audio
     winSnd.close();
     bubbleSnd.close();
     torpRunSnd.close();
+    pingSnd.close();
   }
 
   // Plays snd beginning at pan location x, panning in real time

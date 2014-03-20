@@ -176,8 +176,9 @@ void maybePing()
   else if (random (0, 100) < 1.0)
   {
     pingCount = 50;                   // Wait at least 50 frames
-    PingTone pt = new PingTone();     // PingTone class in Audio tab
-    pt.noteOn();
+    //PingTone pt = new PingTone();     // PingTone class in Audio tab
+    //pt.noteOn();
+    aud.safePlay(aud.pingSnd);
   }
 }
 
