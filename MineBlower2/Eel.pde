@@ -75,7 +75,7 @@ class Eel
     if (eelSt == 0)        // Can only zap if in normal state
     {
       eelSt = 1;
-      aud.triggerWhere(aud.zapSnd, xLoc);
+      aud.triggerWhere(random(2) > 1 ? aud.zapSnd1 : aud.zapSnd2, xLoc);
     }
   }
 

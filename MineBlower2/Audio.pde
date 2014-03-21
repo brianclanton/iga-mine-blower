@@ -20,7 +20,8 @@ class Audio
   AudioPlayer diveSnd;
   AudioSample bangSnd;
   AudioSample disarmSnd;
-  AudioSample zapSnd;
+  AudioSample zapSnd1;
+  AudioSample zapSnd2;
   AudioSample groundSnd;
   AudioPlayer noMoreSnd;
   AudioPlayer fireSnd;
@@ -49,8 +50,9 @@ class Audio
     bangSnd = minim.loadSample("Audio/Bang.mp3", 512);
     disarmSnd = minim.loadSample("NewAudio/Disarm.mp3", 512);
     disarmSnd.setGain(4.0);
-    zapSnd = minim.loadSample("Audio/Zap.mp3", 512);
-    zapSnd.setGain(-8.0);
+    zapSnd1 = minim.loadSample("NewAudio/Zap1.mp3", 512);
+    zapSnd2 = minim.loadSample("NewAudio/Zap2.mp3", 512);
+    //zapSnd.setGain(-8.0);
     groundSnd = minim.loadSample("Audio/Grounded.mp3", 512);
     noMoreSnd = minim.loadFile("Audio/NoMore.mp3", 512);
     fireSnd = minim.loadFile("Audio/Fire.mp3", 512);
@@ -79,7 +81,8 @@ class Audio
     diveSnd.pause();
     bangSnd.stop();
     disarmSnd.stop();
-    zapSnd.stop();
+    zapSnd1.stop();
+    zapSnd2.stop();
     groundSnd.stop();
     noMoreSnd.pause();
     fireSnd.pause();
@@ -104,7 +107,8 @@ class Audio
     diveSnd.close();
     bangSnd.close();
     disarmSnd.close();
-    zapSnd.close();
+    zapSnd1.close();
+    zapSnd2.close();
     groundSnd.close();
     noMoreSnd.close();
     fireSnd.close();
