@@ -47,7 +47,7 @@ class Audio
     reverseSnd.setGain(-8.0);
     diveSnd = minim.loadFile("Audio/Dive.mp3", 512);
     diveSnd.setGain(-8.0);
-    bangSnd = minim.loadSample("Audio/Bang.mp3", 512);
+    bangSnd = minim.loadSample("NewAudio/Bang.mp3", 512);
     disarmSnd = minim.loadSample("NewAudio/Disarm.mp3", 512);
     disarmSnd.setGain(4.0);
     zapSnd1 = minim.loadSample("NewAudio/Zap1.mp3", 512);
