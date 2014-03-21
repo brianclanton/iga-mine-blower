@@ -44,9 +44,9 @@ class Audio
 
   void loadAudio()    // Called in setup()
   {
-    forwardSnd = minim.loadFile("Audio/Forward.mp3", 512);
+    forwardSnd = minim.loadFile("NewAudio/Forward.mp3", 512);
     forwardSnd.setGain(-8.0);     // Turn it down
-    reverseSnd = minim.loadFile("Audio/Reverse.mp3", 512);
+    reverseSnd = minim.loadFile("NewAudio/Reverse.mp3", 512);
     reverseSnd.setGain(-8.0);
     diveSnd = minim.loadFile("NewAudio/Dive.mp3", 512);
     diveSnd.setGain(-8.0);
@@ -61,7 +61,7 @@ class Audio
     groundSnd = minim.loadSample("NewAudio/Grounded.mp3", 512);
     groundSnd.setGain(-4.0);
     noMoreSnd = minim.loadFile("NewAudio/NoMore.mp3", 512);
-    fireSnd = minim.loadFile("Audio/Fire.mp3", 512);
+    fireSnd = minim.loadFile("NewAudio/Bubbles.mp3", 512);
     backSnd = minim.loadFile("NewAudio/Ocean.mp3", 512);
     backSnd.setGain(-10.0);
     tooLeftSnd = minim.loadFile("NewAudio/TooLeft.mp3", 512);
