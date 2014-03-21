@@ -31,6 +31,7 @@ class Audio
   AudioPlayer tooUpSnd;
   AudioPlayer tooDownSnd;
   AudioPlayer sinkingSnd;
+  AudioPlayer startSnd;
   AudioPlayer sunkSnd;
   AudioPlayer winSnd;
   AudioPlayer bubbleSnd;
@@ -63,13 +64,14 @@ class Audio
     fireSnd = minim.loadFile("Audio/Fire.mp3", 512);
     backSnd = minim.loadFile("NewAudio/Ocean.mp3", 512);
     backSnd.setGain(-10.0);
-    tooLeftSnd = minim.loadFile("Audio/TooLeft.mp3", 512);
-    tooRightSnd = minim.loadFile("Audio/TooRight.mp3", 512);
-    tooUpSnd = minim.loadFile("Audio/TooUp.mp3", 512);
-    tooDownSnd = minim.loadFile("Audio/TooDown.mp3", 512);
+    tooLeftSnd = minim.loadFile("NewAudio/TooLeft.mp3", 512);
+    tooRightSnd = minim.loadFile("NewAudio/TooRight.mp3", 512);
+    tooUpSnd = minim.loadFile("NewAudio/TooUp.mp3", 512);
+    tooDownSnd = minim.loadFile("NewAudio/TooDown.mp3", 512);
     sinkingSnd = minim.loadFile("Audio/Sinking.mp3", 512);
-    sunkSnd = minim.loadFile("Audio/Sunk.mp3", 512);
-    winSnd = minim.loadFile("Audio/Win.mp3", 512);
+    startSnd = minim.loadFile("NewAudio/GameStart.mp3", 512);
+    sunkSnd = minim.loadFile("NewAudio/Sunk.mp3", 512);
+    winSnd = minim.loadFile("NewAudio/Win.mp3", 512);
     bubbleSnd = minim.loadFile("NewAudio/Bubbles.mp3", 512);
     //bubbleSnd.setGain(-12.0);
     torpRunSnd = minim.loadFile("Audio/TorpedoRun.mp3", 512);
@@ -99,6 +101,7 @@ class Audio
     tooUpSnd.pause();
     tooDownSnd.pause();
     sinkingSnd.pause();
+    startSnd.pause();
     sunkSnd.pause();
     winSnd.pause();
     bubbleSnd.pause();
@@ -125,6 +128,7 @@ class Audio
     tooUpSnd.close();
     tooDownSnd.close();
     sinkingSnd.close();
+    startSnd.close();
     sunkSnd.close();
     winSnd.close();
     bubbleSnd.close();

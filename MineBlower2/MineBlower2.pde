@@ -111,7 +111,10 @@ void draw()
     }
 
     // Update /////////////////////////////////////////
-    aud.backSync.intro = false;
+    if (aud.backSync.intro) {
+      aud.backSync.intro = false;
+      aud.safePlay(aud.startSnd);
+    }
     
     b1.move();                        // Animate the bubbles
     // Ambient sonar ping
