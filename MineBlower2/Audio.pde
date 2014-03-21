@@ -48,7 +48,7 @@ class Audio
     forwardSnd.setGain(-8.0);     // Turn it down
     reverseSnd = minim.loadFile("Audio/Reverse.mp3", 512);
     reverseSnd.setGain(-8.0);
-    diveSnd = minim.loadFile("Audio/Dive.mp3", 512);
+    diveSnd = minim.loadFile("NewAudio/Dive.mp3", 512);
     diveSnd.setGain(-8.0);
     bangSnd = minim.loadSample("NewAudio/Bang.mp3", 512);
     bangSnd.setGain(8.0);
@@ -60,7 +60,7 @@ class Audio
     zapSnd2.setGain(-4.0);
     groundSnd = minim.loadSample("NewAudio/Grounded.mp3", 512);
     groundSnd.setGain(-4.0);
-    noMoreSnd = minim.loadFile("Audio/NoMore.mp3", 512);
+    noMoreSnd = minim.loadFile("NewAudio/NoMore.mp3", 512);
     fireSnd = minim.loadFile("Audio/Fire.mp3", 512);
     backSnd = minim.loadFile("NewAudio/Ocean.mp3", 512);
     backSnd.setGain(-10.0);
@@ -68,7 +68,7 @@ class Audio
     tooRightSnd = minim.loadFile("NewAudio/TooRight.mp3", 512);
     tooUpSnd = minim.loadFile("NewAudio/TooUp.mp3", 512);
     tooDownSnd = minim.loadFile("NewAudio/TooDown.mp3", 512);
-    sinkingSnd = minim.loadFile("Audio/Sinking.mp3", 512);
+    sinkingSnd = minim.loadFile("NewAudio/Sinking.mp3", 512);
     startSnd = minim.loadFile("NewAudio/GameStart.mp3", 512);
     sunkSnd = minim.loadFile("NewAudio/Sunk.mp3", 512);
     winSnd = minim.loadFile("NewAudio/Win.mp3", 512);
