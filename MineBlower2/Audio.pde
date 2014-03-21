@@ -50,12 +50,13 @@ class Audio
     diveSnd = minim.loadFile("Audio/Dive.mp3", 512);
     diveSnd.setGain(-8.0);
     bangSnd = minim.loadSample("NewAudio/Bang.mp3", 512);
+    bangSnd.setGain(8.0);
     disarmSnd = minim.loadSample("NewAudio/Disarm.mp3", 512);
     disarmSnd.setGain(4.0);
     zapSnd1 = minim.loadSample("NewAudio/Zap1.mp3", 512);
     zapSnd2 = minim.loadSample("NewAudio/Zap2.mp3", 512);
     //zapSnd.setGain(-8.0);
-    groundSnd = minim.loadSample("Audio/Grounded.mp3", 512);
+    groundSnd = minim.loadSample("NewAudio/Grounded.mp3", 512);
     noMoreSnd = minim.loadFile("Audio/NoMore.mp3", 512);
     fireSnd = minim.loadFile("Audio/Fire.mp3", 512);
     backSnd = minim.loadFile("NewAudio/Ocean.mp3", 512);
@@ -303,9 +304,9 @@ class Synchronizer
   Synchronizer()
   {
     introRiff = minim.loadFile("NewAudio/IntroRiff.mp3", 512);
-    introRiff.setGain(-4.0);
+    introRiff.setGain(-6.0);
     mainRiff = minim.loadFile("NewAudio/MainRiff.mp3", 512);
-    mainRiff.setGain(-4.0);
+    mainRiff.setGain(-6.0);
     susRiff = minim.loadFile("NewAudio/SuspenseRiff.wav", 512);
     susRiff.setGain(-0.0);
     hitRiff = minim.loadFile("NewAudio/HitRiff.wav", 512);
