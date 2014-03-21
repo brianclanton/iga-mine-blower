@@ -54,9 +54,11 @@ class Audio
     disarmSnd = minim.loadSample("NewAudio/Disarm.mp3", 512);
     disarmSnd.setGain(4.0);
     zapSnd1 = minim.loadSample("NewAudio/Zap1.mp3", 512);
+    zapSnd1.setGain(-4.0);
     zapSnd2 = minim.loadSample("NewAudio/Zap2.mp3", 512);
-    //zapSnd.setGain(-8.0);
+    zapSnd2.setGain(-4.0);
     groundSnd = minim.loadSample("NewAudio/Grounded.mp3", 512);
+    groundSnd.setGain(-4.0);
     noMoreSnd = minim.loadFile("Audio/NoMore.mp3", 512);
     fireSnd = minim.loadFile("Audio/Fire.mp3", 512);
     backSnd = minim.loadFile("NewAudio/Ocean.mp3", 512);
