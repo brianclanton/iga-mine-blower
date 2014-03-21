@@ -284,6 +284,39 @@ class PingTone
   }
 }
 
+class TorpedoTone
+{
+  Oscil myWave;      // Sine wave oscillator for the ping sound
+  Damp myDamp;       // Damp envelope for decay after quick attack
+  Flanger myFlanger;    
+  Pan myPan;         // Pan it somewhere in the stereo field
+  Gain myGain;
+
+  TorpedoTone()         // Constructor creates an object for the pings
+  {
+    myWave = new Oscil( 220, 0.2, Waves.SINE ); // 1000 Hz, kinda loud
+    myDamp = new Damp( 0.01, 0.5, 0.3 );         // Attack, decay time, amp
+    myFlanger = new Flanger( 1000, 1, 10000, .01, 200, 1000);
+    // myPan = new Pan(random(-1.0, 1.0));          // Random pan location
+    myGain = new Gain(-50.0);
+    myWave.patch(myFlanger).patch(myDamp).patch(myGain); // Chain together
+  }
+
+  void noteOn()      // Called from main to start pinging
+  {
+    myDamp.activate();          // Turn on the envelope
+    myGain.patch( aud.out );     // Patch end of chain to out to hear it
+    
+    myDamp.unpatchAfterDamp( aud.out );
+  }
+
+  void noteOff()                // Not needed with the Delay envelope
+  {
+    myDamp.unpatchAfterDamp( aud.out );
+  }
+  
+}
+
 
 class Synchronizer
 {

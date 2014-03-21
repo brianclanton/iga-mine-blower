@@ -40,7 +40,9 @@ class Torpedo
       dx = launchV;           // launch speed
       dy = sub.dy*0.5;        // Use half of Sub's vertical speed
       tState = 1;
-      aud.panPlay(aud.torpRunSnd, x, launchV);
+      TorpedoTone tt = new TorpedoTone();
+      tt.noteOn();
+      //aud.panPlay(aud.torpRunSnd, x, launchV);
       aud.backSync.fire = true;
     }
     else if (tState == 3)     // No more torpedos, state is a sink
