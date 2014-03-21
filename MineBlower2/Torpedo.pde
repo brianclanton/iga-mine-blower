@@ -41,6 +41,7 @@ class Torpedo
       dy = sub.dy*0.5;        // Use half of Sub's vertical speed
       tState = 1;
       aud.panPlay(aud.torpRunSnd, x, launchV);
+      aud.backSync.fire = true;
     }
     else if (tState == 3)     // No more torpedos, state is a sink
       aud.safePlay (aud.noMoreSnd, x);
@@ -58,6 +59,7 @@ class Torpedo
       tState = 2;         // Torpedo is gone
       waitSome = 30;      // Give animations a chance to finish
       aud.torpRunSnd.pause();
+      aud.backSync.hit = true;
     }
   }
 
@@ -76,6 +78,7 @@ class Torpedo
         tState = 2;           // ...and retire the torpedo
         waitSome = 30;        // Give animations a chance to finish
         aud.fadeOut(aud.torpRunSnd);
+        aud.backSync.miss = true;
       }
       else                    // Torpedo still running, so stay in this state
       {

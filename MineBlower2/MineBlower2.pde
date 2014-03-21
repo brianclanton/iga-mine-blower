@@ -84,6 +84,8 @@ void setup()
 
 void draw()
 {
+  aud.backSync.Update();
+  
   if (gameState == 0)           // Show instructions
   {
     if (showInstruct)
@@ -109,6 +111,8 @@ void draw()
     }
 
     // Update /////////////////////////////////////////
+    aud.backSync.intro = false;
+    
     b1.move();                        // Animate the bubbles
     // Ambient sonar ping
     maybePing();

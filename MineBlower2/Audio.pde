@@ -38,6 +38,8 @@ class Audio
   AudioPlayer pingSnd;
 
   AudioOutput out;    // Used for PingTone
+  
+  Synchronizer backSync;
 
   void loadAudio()    // Called in setup()
   {
@@ -56,8 +58,8 @@ class Audio
     groundSnd = minim.loadSample("Audio/Grounded.mp3", 512);
     noMoreSnd = minim.loadFile("Audio/NoMore.mp3", 512);
     fireSnd = minim.loadFile("Audio/Fire.mp3", 512);
-    backSnd = minim.loadFile("NewAudio/BGMusic.mp3", 512);
-    backSnd.setGain(-8.0);
+    backSnd = minim.loadFile("NewAudio/Ocean.mp3", 512);
+    backSnd.setGain(-10.0);
     tooLeftSnd = minim.loadFile("Audio/TooLeft.mp3", 512);
     tooRightSnd = minim.loadFile("Audio/TooRight.mp3", 512);
     tooUpSnd = minim.loadFile("Audio/TooUp.mp3", 512);
@@ -72,6 +74,8 @@ class Audio
     pingSnd = minim.loadFile("NewAudio/Ping.mp3", 512);    
 
     out = minim.getLineOut();    // Used for PingTone
+    
+    backSync = new Synchronizer();
   }
 
   void pauseAll()  // Called when user types 'q' to quit
@@ -272,4 +276,197 @@ class PingTone
     myDamp.unpatchAfterDamp( aud.out );
   }
 }
+
+
+class Synchronizer
+{
+  AudioPlayer introRiff;
+  AudioPlayer mainRiff;
+  AudioPlayer susRiff;
+  AudioPlayer hitRiff;
+  AudioPlayer missRiff;
+  
+  Balance bal;
+  
+  int lastBeat;
+  int beat;
+  int lastSync;
+  int deltaSync;
+  float bpm;
+  
+  boolean fire = false;
+  boolean suspend = false;
+  boolean hit = false;
+  boolean miss = false;
+  boolean intro = true;
+  
+  Synchronizer()
+  {
+    introRiff = minim.loadFile("NewAudio/IntroRiff.mp3", 512);
+    introRiff.setGain(-4.0);
+    mainRiff = minim.loadFile("NewAudio/MainRiff.mp3", 512);
+    mainRiff.setGain(-4.0);
+    susRiff = minim.loadFile("NewAudio/SuspenseRiff.wav", 512);
+    susRiff.setGain(-0.0);
+    hitRiff = minim.loadFile("NewAudio/HitRiff.wav", 512);
+    hitRiff.setGain(-0.0);
+    missRiff = minim.loadFile("NewAudio/MissRiff.wav", 512);
+    missRiff.setGain(-0.0);
+    
+    bpm = 104;
+    Start();
+  }
+  
+  void Start()
+  {
+    lastBeat = 0;
+    beat = 0;
+    lastSync = millis();
+    deltaSync = 0;
+    introRiff.loop();
+  }
+  
+  void StopAll()
+  {
+    introRiff.pause();
+    mainRiff.pause();
+    susRiff.pause();
+    hitRiff.pause();
+    missRiff.pause();
+  }
+  
+  void Update()
+  {
+    deltaSync = millis() - lastSync;
+    lastBeat = beat;
+    beat += floor(deltaSync * bpm / 60000);
+    
+    if (suspend)
+    {
+      if (hit)
+      {
+        StopAll();
+        hit = false;
+        miss = false;
+        suspend = false;
+        fire = false;
+        hitRiff.play(0);
+        lastSync = millis();
+        beat = 2;
+      }
+      else if (miss)
+      {
+        StopAll();
+        hit = false;
+        miss = false;
+        suspend = false;
+        fire = false;
+        missRiff.play(0);
+        lastSync = millis();
+        beat = 2;
+      }
+      else
+      {
+        
+      }
+    }
+    else if (beat != lastBeat)
+    {
+      lastSync += 60000.0f / bpm;
+      
+      switch(beat)
+      {
+        default:
+          beat = 0;
+        case 0:
+          if (fire)
+          {
+            fire = false;
+            if (hit)
+            {
+              StopAll();
+              hit = false;
+              miss = false;
+              hitRiff.play(0);
+            }
+            else if (miss)
+            {
+              StopAll();
+              hit = false;
+              miss = false;
+              missRiff.play(0);
+            }
+            else
+            {
+              StopAll();
+              suspend = true;
+              susRiff.play(0);
+            }
+          }
+          else
+          {
+            if (!intro)
+            {
+              if (!mainRiff.isPlaying())
+              {
+                StopAll();
+                mainRiff.loop();
+              }
+            }
+            else
+            {
+              if (!introRiff.isPlaying())
+              {
+                StopAll();
+                introRiff.loop(); 
+              }
+            }
+          }
+        
+          break;
+        case 1:
+          
+        
+          break;
+        case 2:
+          if (fire)
+          {
+            fire = false;
+            if (hit)
+            {
+              StopAll();
+              hit = false;
+              miss = false;
+              hitRiff.play(0);
+            }
+            else if (miss)
+            {
+              StopAll();
+              hit = false;
+              miss = false;
+              missRiff.play(0);
+            }
+            else
+            {
+              StopAll();
+              suspend = true;
+              susRiff.play(0);
+            }
+          }
+          else
+          {
+            
+          }
+        
+          break;
+        case 3:
+          
+        
+          break;
+      }
+    }
+    
+  }
+}
+
 
